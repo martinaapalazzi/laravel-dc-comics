@@ -20,6 +20,7 @@ class ComicSeeder extends Seeder
 
             $comic = new Comic();
 
+            //$comic->nome-che-ho-dato-io-nella-struttura = $singleComicData['chiave-che-si-trova-nel-config'];
             $comic->title = $singleComicData['title'];
             $comic->description = $singleComicData['description'];
             $comic->src = $singleComicData['thumb'];
@@ -29,6 +30,7 @@ class ComicSeeder extends Seeder
             $comic->type = $singleComicData['type'];
             $comic->artists = implode(", ", $singleComicData['artists']);
             $comic->writers = implode(", ", $singleComicData['writers']);
+            
             $comic->save();
         }
     }
