@@ -4,7 +4,7 @@
 
 @section('main-content')
 <h1>
-    {{ $pasta->title }}
+    {{ $comic->title }}
 </h1>
 
 <div class="row">
@@ -16,26 +16,20 @@
         </div>
 
         <div class="card">
-            <img src="{{ $pasta->src }}" alt="{{ $pasta->title }}" class="card-img-top">
+            <img src="{{ $comic->src }}" alt="{{ $comic->title }}" class="card-img-top">
 
             <div class="card-body">
                 <ul>
                     <li>
-                        Tipo: {{ $pasta->type }}
+                        {{ $comic->description }}
                     </li>
-                    @if ($pasta->cooking_time)
-                        <li>
-                            Tempo di cottura: {{ $pasta->cooking_time }} min.
-                        </li>
-                    @endif
                     <li>
-                        Peso: {{ $pasta->weight }}g
+                        Artists: {{ $comic->artists }}
+                    </li>
+                    <li>
+                        Writers: {{ $comic->writers }}
                     </li>
                 </ul>
-
-                <p>
-                    {{ $pasta->description }}
-                </p>
             </div>
         </div>
     </div>
