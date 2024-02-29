@@ -22,16 +22,14 @@ class ComicSeeder extends Seeder
 
             $comic->title = $singleComicData['title'];
             $comic->description = $singleComicData['description'];
-            $comic->thumb = $singleComicData['src'];
+            $comic->src = $singleComicData['thumb'];
             $comic->price = $singleComicData['price'];
             $comic->series = $singleComicData['series'];
-            $comic->saleDate = $singleComicData['sale_date'];
+            $comic->sale_date = $singleComicData['sale_date'];
             $comic->type = $singleComicData['type'];
-
+            $comic->artists = implode(", ", $singleComicData['artists']);
+            $comic->writers = implode(", ", $singleComicData['writers']);
             $comic->save();
-
-            //$comic->artists = $singleComicData['artists'];
-            //$comic->writers = $singleComicData['writers'];
         }
     }
 }

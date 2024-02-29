@@ -24,10 +24,10 @@ return new class extends Migration
             $table->string('src', 1024)->nullable();
 
             // PRICE decimal(6,2) NOT NULL
-            $table->decimal('price', $precision = 8, $scale = 2);
+            $table->string('price', 50);
 
             // SERIES string 30 NOT NULL
-            $table->string('series', 30);
+            $table->string('series', 100);
 
             // SALE_DATE date NOT NULL
             $table->date('sale_date');
@@ -36,10 +36,10 @@ return new class extends Migration
             $table->string('type', 30);
 
             // ARTISTS string 64 NOT NULL
-            //$table->array('artists');
+            $table->text('artists');
             
             // WRITERS string 64 NOT NULL
-            //$table->array('writers');
+            $table->text('writers');
 
             $table->timestamps();
 
