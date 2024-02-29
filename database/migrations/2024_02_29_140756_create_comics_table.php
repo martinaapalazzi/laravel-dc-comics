@@ -36,10 +36,10 @@ return new class extends Migration
             $table->string('type', 30);
 
             // ARTISTS string 64 NOT NULL
-            $table->array('artists');
+            //$table->array('artists');
             
             // WRITERS string 64 NOT NULL
-            $table->array('writers');
+            //$table->array('writers');
 
             $table->timestamps();
 

@@ -7,7 +7,6 @@ use Illuminate\Database\Seeder;
 
 // Models 
 use App\Models\Comic;
-
 class ComicSeeder extends Seeder
 {
     /**
@@ -18,7 +17,21 @@ class ComicSeeder extends Seeder
         $comicsData = config('comics'); 
 
         foreach ($comicsData as $index => $singleComicData) {
-            # code...
+
+            $comic = new Comic();
+
+            $comic->title = $singleComicData['title'];
+            $comic->description = $singleComicData['description'];
+            $comic->thumb = $singleComicData['src'];
+            $comic->price = $singleComicData['price'];
+            $comic->series = $singleComicData['series'];
+            $comic->saleDate = $singleComicData['sale_date'];
+            $comic->type = $singleComicData['type'];
+
+            $comic->save();
+
+            //$comic->artists = $singleComicData['artists'];
+            //$comic->writers = $singleComicData['writers'];
         }
     }
 }
