@@ -48,7 +48,7 @@
                             </a>
                         </td>
                         <td>
-                            <a href="{{ route('comics.show', ['comic' => $comic->id]) }}" class="btn btn-warning">
+                            <a href="{{ route('comics.edit', ['comic' => $comic->id]) }}" class="btn btn-warning">
                                 Edit
                             </a>
                         </td>

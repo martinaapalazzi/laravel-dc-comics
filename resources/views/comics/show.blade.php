@@ -28,6 +28,18 @@
                         <h5>Writers:</h5>
                         {{ $comic->writers }}
                     </li>
+                    <li class="pb-3">
+                        <h5>Price:</h5>
+                        {{ $comic->price }}
+                    </li>
+                    <li class="pb-3">
+                        <h5>Genre:</h5>
+                        {{ $comic->series }}
+                    </li>
+                    <li class="pb-3">
+                        <h5>Release date:</h5>
+                        {{ $comic->sale_date }}
+                    </li>
                 </ul>
             </div>
         </div>

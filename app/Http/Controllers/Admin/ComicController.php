@@ -96,17 +96,38 @@ class ComicController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Comic $comic)
     {
-        //
+        return view('comics.edit', compact('comic'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Comic $comic)
     {
-        //
+        $singleComicData = $request->all();
+
+        // PER SCRIVERE TUTTO IN UNA SOLA RIGA
+        $comic->update($singleComicData);
+
+        // OPPURE
+        // $comic->fill($singleComicData);
+        // $comic->save();
+
+        //$comic->title = $singleComicData['title'];
+        //$comic->description = $singleComicData['description'];
+        //$comic->thumb = $singleComicData['thumb'];
+        //$comic->price = $singleComicData['price'];
+        //$comic->series = $singleComicData['series'];
+        //$comic->sale_date = $singleComicData['sale_date'];
+        //$comic->type = $singleComicData['type'];
+        //$comic->artists = implode(", ", $singleComicData['artists']);
+        //$comic->artists = implode(", ", $singleComicData['writers']);
+
+        $comic->save();
+        return redirect()->route('comics.show', ['comic'=>$comic->id]);
+
     }
 
     /* -------------- FINE UPDATE -------------- */
@@ -117,9 +138,11 @@ class ComicController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Comic $comic)
     {
-        //
+        $comic->delete();
+
+        return redirect()->route('comics.index');
     }
     /* -------------- FINE DELETE -------------- */
 }

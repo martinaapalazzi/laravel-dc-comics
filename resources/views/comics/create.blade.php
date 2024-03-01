@@ -29,18 +29,33 @@
             </div>
 
             <div class="mb-3">
-                <label for="type" class="form-label">Description</label>
-                <input type="text" class="form-control" id="type" name="type" placeholder="Write a description..." maxlength="100">
+                <label for="description" class="form-label">Description</label>
+                <input type="text" class="form-control" id="description" name="description" placeholder="Write a description..." maxlength="100">
             </div>
 
             <div class="mb-3">
-                <label for="cooking-time" class="form-label">Comic price<span class="text-danger">*</span></label>
-                <input type="number" class="form-control" id="cooking-time" name="cooking_time" placeholder="How much is this comic?" min="1" max="20">
+                <label for="comic-price" class="form-label">Comic price<span class="text-danger">*</span></label>
+                <input type="number" class="form-control" id="comic-price" name="comic-price" placeholder="How much is this comic?" min="1" max="20" required>
             </div>
 
             <div class="mb-3">
-                <label for="weight" class="form-label">When was it released?<span class="text-danger">*</span></label>
-                <input type="number" class="form-control" id="weight" name="weight" placeholder="Add the release date..." required>
+                <label for="comic-genre" class="form-label">Comic genre</label>
+                <input type="text" class="form-control" id="comic-genre" name="comic-genre" placeholder="What is its genre?" min="1" max="20">
+            </div>
+
+            <div class="mb-3">
+                <label for="sale_date" class="form-label">When was it released?<span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="sale_date" name="sale_date" placeholder="Add the release date..." required>
+            </div>
+
+            <div class="mb-3">
+                <label for="artists" class="form-label">Who are the artists?</label>
+                <input type="text" class="form-control" id="artists" name="artists" placeholder="Write the artists...">
+            </div>
+
+            <div class="mb-3">
+                <label for="writers" class="form-label">Who are the writers?</label>
+                <input type="text" class="form-control" id="writers" name="writers" placeholder="Write the writers...">
             </div>
 
             <div>
