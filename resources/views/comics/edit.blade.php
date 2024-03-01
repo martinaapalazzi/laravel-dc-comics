@@ -42,12 +42,12 @@
 
             <div class="mb-3">
                 <label for="comic-price" class="form-label">Comic price<span class="text-danger">*</span></label>
-                <input value="{{ $comic->price }}" type="number" class="form-control" id="comic-price" name="comic-price" placeholder="How much is this comic?" min="1" max="20">
+                <input value="{{ $comic->price }}" type="text" class="form-control" id="comic-price" name="comic-price" placeholder="How much is this comic?" min="1" max="20">
             </div>
 
             <div class="mb-3">
                 <label for="date" class="form-label">When was it released?<span class="text-danger">*</span></label>
-                <input value="{{ $comic->sale_date }}" type="number" class="form-control" id="date" name="date" placeholder="Add the release date..." required>
+                <input value="{{ $comic->sale_date }}" type="text" class="form-control" id="date" name="date" placeholder="Add the release date..." required>
             </div>
 
             <div>

@@ -35,7 +35,7 @@
 
             <div class="mb-3">
                 <label for="comic-price" class="form-label">Comic price<span class="text-danger">*</span></label>
-                <input type="number" class="form-control" id="comic-price" name="comic-price" placeholder="How much is this comic?" min="1" max="20" required>
+                <input type="text" class="form-control" id="comic-price" name="comic-price" placeholder="How much is this comic?" min="1" max="20" required>
             </div>
 
             <div class="mb-3">
