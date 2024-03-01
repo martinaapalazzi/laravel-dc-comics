@@ -71,21 +71,21 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        $singleComicData = $request->all();
+        $newSingleComicData = $request->all();
 
         $comic = new Comic();
-        $comic->title = $singleComicData['title'];
-        $comic->description = $singleComicData['description'];
-        $comic->src = $singleComicData['thumb'];
-        $comic->price = $singleComicData['price'];
-        $comic->series = $singleComicData['series'];
-        $comic->sale_date = $singleComicData['sale_date'];
-        $comic->type = $singleComicData['type'];
-        $comic->artists = implode(", ", $singleComicData['artists']);
-        $comic->writers = implode(", ", $singleComicData['writers']);   
+        $comic->title = $newSingleComicData['title'];
+        $comic->description = $newSingleComicData['description'];
+        $comic->src = $newSingleComicData['thumb'];
+        $comic->price = $newSingleComicData['price'];
+        $comic->series = $newSingleComicData['series'];
+        $comic->sale_date = $newSingleComicData['sale_date'];
+        $comic->type = $newSingleComicData['type'];
+        $comic->artists = implode(", ", $newSingleComicData['artists']);
+        $comic->writers = implode(", ", $newSingleComicData['writers']);   
         $comic->save();
 
-        return redirect()->route('comic.show', ['comic' => $comic->id]);
+        return redirect()->route('comics.show', ['comic' => $comic->id]);
     }
 
     /* -------------- FINE CREATE -------------- */

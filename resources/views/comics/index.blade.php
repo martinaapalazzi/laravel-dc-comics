@@ -32,8 +32,10 @@
                     <tr>
                         <th scope="row">{{ $comic->id }}</th>
                         <td>
-                            <img src="{{ $comic->src }}
-                            " alt="">
+                            <div class="poster-container">
+                                <img src="{{ $comic->src }}
+                                " alt="">
+                            </div>
                         </td>
                         <td>{{ $comic->title }}</td>
                         <td>{{ $comic->price }}</td>
