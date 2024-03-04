@@ -37,6 +37,9 @@
     
 Tutte queste 4 view, saranno messe in una cartella dentro views, nominata come la risorsa al plurale in kebab case (ad es., se la risorsa è mio libro, il nome della cartella sarà my-books). I nomi delle 4 view, solitamente, corrisponderanno al nome della funzione che le restituisce (quindi, index.blade.php per index, show.blade.php per show, create.blade.php per create e edit.blade.php per edit).
 
+# COMANDI UTILI
+php artisan lang:publish
+
 # Laravel DC Comics
 
 Ciao ragazzi,
@@ -54,3 +57,6 @@ Iniziate a definire le prime operazioni CRUD con le relative view:
 
 Bonus:
 Creare il seeder per la tabella comics utilizzando il file in allegato.
+
+
+php artisan lang:publish
