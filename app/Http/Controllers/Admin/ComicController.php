@@ -74,15 +74,20 @@ class ComicController extends Controller
         $newSingleComicData = $request->all();
 
         $comic = new Comic();
+                                        // è il name="" del mio input
         $comic->title = $newSingleComicData['title'];
         $comic->description = $newSingleComicData['description'];
         $comic->src = $newSingleComicData['src'];
-        $comic->price = $newSingleComicData['price'];
-        $comic->series = $newSingleComicData['series'];
+        $comic->price = $newSingleComicData['comic-price'];
+        $comic->series = $newSingleComicData['comic-genre'];
         $comic->sale_date = $newSingleComicData['sale_date'];
         $comic->type = $newSingleComicData['type'];
-        $comic->artists = implode(", ", $newSingleComicData['artists']);
-        $comic->writers = implode(", ", $newSingleComicData['writers']);   
+        if($newSingleComicData['artists'] !== null) {
+            $comic->artists = implode(", ", $newSingleComicData['artists']);
+        }
+        if($newSingleComicData['artists'] !== null) {
+            $comic->writers = implode(", ", $newSingleComicData['writers']);
+        }
         $comic->save();
 
         return redirect()->route('comics.show', ['comic' => $comic->id]);
@@ -115,8 +120,8 @@ class ComicController extends Controller
             'series' => 'required|max:100|in:show,movie,documentary',
             'sale_date' => 'required',
             'type' => 'required|max:30',
-            'artists' => 'required',
-            'writers' => 'required',
+            'artists' => 'nullable',
+            'writers' => 'nullable',
         ]);
 
         // QUESTA $REQUEST->ALL() NON CI SERVE PI SE FACCIAMO LA VALIDAZIONE!

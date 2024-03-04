@@ -12,8 +12,9 @@
 
         <div class="card">
             <div class="poster-container pt-3">
-                <img src="{{ $comic->src }}" alt="{{ $comic->title }}" class="card-img-top">
-            </div>
+                @if ($comic->src)
+                    <img src="{{ $comic->src }}" alt="{{ $comic->title }}" class="card-img-top">
+                @endif
             <div class="card-body">
                 <ul class="list-style">
                     <li class="pb-3">

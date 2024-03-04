@@ -35,11 +35,11 @@ return new class extends Migration
             // TYPE string 30 NOT NULL
             $table->string('type', 30);
 
-            // ARTISTS string 64 NOT NULL
-            $table->text('artists');
+            // ARTISTS string 64 NULL
+            $table->text('artists')->nullable();
             
-            // WRITERS string 64 NOT NULL
-            $table->text('writers');
+            // WRITERS string 64 NULL
+            $table->text('writers')->nullable();
 
             $table->timestamps();
 
