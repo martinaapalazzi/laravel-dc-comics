@@ -106,8 +106,6 @@ class ComicController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
-        $singleComicData = $request->all();
-
         // VALIDATION
         $validationResults = $request->validate([
             'title' => 'required|max:64',
@@ -120,7 +118,8 @@ class ComicController extends Controller
             'artists' => 'required',
             'writers' => 'required',
         ]);
-
+        
+        $singleComicData = $request->all();
 
         // PER SCRIVERE TUTTO IN UNA SOLA RIGA
         $comic->update($singleComicData);

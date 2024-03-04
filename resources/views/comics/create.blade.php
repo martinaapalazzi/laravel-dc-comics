@@ -14,6 +14,16 @@
                 Go back to Comic Home Page!
             </a>
         </div>
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li> {{ $errors }}</li>
+                    @endforeach
+                </ul>
+            </div> 
+        @enderror
         
         <form action="{{ route('comics.store') }}" method="POST">
             @csrf
