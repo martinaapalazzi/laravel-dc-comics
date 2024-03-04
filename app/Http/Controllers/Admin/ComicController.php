@@ -71,23 +71,40 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        $newSingleComicData = $request->all();
+        // VALIDATION
+        $validatedSingleComicResults = $request->validate([
+            'title' => 'required|max:64',
+            'description' => 'nullable|max:4000',
+            'src' => 'nullable|max:1024|min:1',
+            'price' => 'required|max:50',
+            'series' => 'required|max:100|in:show,movie,documentary',
+            'sale_date' => 'required',
+            'type' => 'required|max:30',
+            'artists' => 'nullable',
+            'writers' => 'nullable',
+        ]);
 
-        $comic = new Comic();
+        // QUESTA $REQUEST->ALL() NON CI SERVE PI SE FACCIAMO LA VALIDAZIONE!
+        // $validateeSingleComicResults = $request->all();
+
+        $comic = Comic::create($validatedSingleComicResults);
+
+        // OPPURE 
+        //$comic = new Comic();
                                         // è il name="" del mio input
-        $comic->title = $newSingleComicData['title'];
-        $comic->description = $newSingleComicData['description'];
-        $comic->src = $newSingleComicData['src'];
-        $comic->price = $newSingleComicData['comic-price'];
-        $comic->series = $newSingleComicData['comic-genre'];
-        $comic->sale_date = $newSingleComicData['sale_date'];
-        $comic->type = $newSingleComicData['type'];
-        if($newSingleComicData['artists'] !== null) {
-            $comic->artists = implode(", ", $newSingleComicData['artists']);
-        }
-        if($newSingleComicData['artists'] !== null) {
-            $comic->writers = implode(", ", $newSingleComicData['writers']);
-        }
+        //$comic->title = $validatedSingleComicResults['title'];
+        //$comic->description = $validatedSingleComicResults['description'];
+        //$comic->src = $validatedSingleComicResults['src'];
+        //$comic->price = $validatedSingleComicResults['comic-price'];
+        //$comic->series = $validatedSingleComicResults['comic-genre'];
+        //$comic->sale_date = $validatedSingleComicResults['sale_date'];
+        //$comic->type = $validatedSingleComicResults['type'];
+        //if($validatedSingleComicResults['artists'] !== null) {
+        //    $comic->artists = implode(", ", $validatedSingleComicResults['artists']);
+        //}
+        //if($validatedSingleComicResults['artists'] !== null) {
+        //    $comic->writers = implode(", ", $validatedSingleComicResults['writers']);
+        //}
         $comic->save();
 
         return redirect()->route('comics.show', ['comic' => $comic->id]);
@@ -111,9 +128,10 @@ class ComicController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
+
         // VALIDATION
-        $validationSingleComicResults = $request->validate([
-            'title' => 'required|max:64',
+        $validatedSingleComicResults = $request->validate([
+            // 'title' => 'required|max:64', <- se non voglio che il titolo non puo essere aggiornato
             'description' => 'nullable|max:4000',
             'src' => 'nullable|max:1024|min:1',
             'price' => 'required|max:50',
@@ -125,24 +143,26 @@ class ComicController extends Controller
         ]);
 
         // QUESTA $REQUEST->ALL() NON CI SERVE PI SE FACCIAMO LA VALIDAZIONE!
-        // $validationSingleComicResults = $request->all(); 
+        //$updatedComicData = $request->all(); 
 
         // PER SCRIVERE TUTTO IN UNA SOLA RIGA
-        $comic->update($validationSingleComicResults);
+        $comic->update($validatedSingleComicResults);
 
         // OPPURE
-        // $comic->fill($validationSingleComicResults);
+        // $comic = new Comic();
+        // $comic->fill($updatedComicData);
         // $comic->save();
 
-        //$comic->title = $validationSingleComicResults['title'];
-        //$comic->description = $validationSingleComicResults['description'];
-        //$comic->thumb = $validationSingleComicResults['thumb'];
-        //$comic->price = $validationSingleComicResults['price'];
-        //$comic->series = $validationSingleComicResults['series'];
-        //$comic->sale_date = $validationSingleComicResults['sale_date'];
-        //$comic->type = $validationSingleComicResults['type'];
-        //$comic->artists = implode(", ", $validationSingleComicResults['artists']);
-        //$comic->artists = implode(", ", $validationSingleComicResults['writers']);
+        // $comic = new Comic();
+        //$comic->title = $updatedComicData['title'];
+        //$comic->description = $updatedComicData['description'];
+        //$comic->thumb = $updatedComicData['thumb'];
+        //$comic->price = $updatedComicData['price'];
+        //$comic->series = $updatedComicData['series'];
+        //$comic->sale_date = $updatedComicData['sale_date'];
+        //$comic->type = $updatedComicData['type'];
+        //$comic->artists = implode(", ", $updatedComicData['artists']);
+        //$comic->artists = implode(", ", $updatedComicData['writers']);
 
         $comic->save();
         return redirect()->route('comics.show', ['comic'=>$comic->id]);
