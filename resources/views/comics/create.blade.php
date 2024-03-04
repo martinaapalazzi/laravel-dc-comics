@@ -30,7 +30,7 @@
 
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
-                <input type="text" class="form-control" id="description" name="description" placeholder="Write a description..." maxlength="100">
+                <input type="text" class="form-control" id="description" name="description" placeholder="Write a description..." maxlength="4000">
             </div>
 
             <div class="mb-3">

@@ -23,10 +23,10 @@ return new class extends Migration
             // THUMB string 1024 NULL
             $table->string('src', 1024)->nullable();
 
-            // PRICE decimal(6,2) NOT NULL
+            // PRICE string 50 NOT NULL
             $table->string('price', 50);
 
-            // SERIES string 30 NOT NULL
+            // SERIES string 100 NOT NULL
             $table->string('series', 100);
 
             // SALE_DATE date NOT NULL

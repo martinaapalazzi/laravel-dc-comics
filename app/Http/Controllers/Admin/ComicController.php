@@ -108,6 +108,20 @@ class ComicController extends Controller
     {
         $singleComicData = $request->all();
 
+        // VALIDATION
+        $validationResults = $request->validate([
+            'title' => 'required|max:64',
+            'description' => 'nullable|max:4000',
+            'src' => 'nullable|max:1024|min:1',
+            'price' => 'required|max:50',
+            'series' => 'required|max:100',
+            'sale_date' => 'required',
+            'type' => 'required|max:30',
+            'artists' => 'required',
+            'writers' => 'required',
+        ]);
+
+
         // PER SCRIVERE TUTTO IN UNA SOLA RIGA
         $comic->update($singleComicData);
 
