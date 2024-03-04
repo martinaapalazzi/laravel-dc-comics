@@ -140,6 +140,8 @@ class ComicController extends Controller
             'type' => 'required|max:30',
             'artists' => 'nullable',
             'writers' => 'nullable',
+        ], [
+            // 'title.required' => 'MESSAGGIO ERRORE CUSTUMED'
         ]);
 
         // QUESTA $REQUEST->ALL() NON CI SERVE PI SE FACCIAMO LA VALIDAZIONE!
