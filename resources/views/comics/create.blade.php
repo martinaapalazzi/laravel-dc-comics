@@ -41,7 +41,7 @@
 
             <div class="mb-3">
                 <label for="title" class="form-label">Title<span class="text-danger">*</span></label>
-                <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" placeholder="Add the title..." required maxlength="64"  value="{{ old('title')
+                <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" placeholder="Add the title..." required maxlength="64" value="{{ old('title')
                 }}">
                 @error('title')
                     <div class="alert alert-danger">
@@ -52,8 +52,10 @@
 
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
-                <input type="text" class="form-control @error('description') is-invalid @enderror" id="description" name="description" placeholder="Write a description..." maxlength="4000" value="{{ old('description')
+                <textarea type="text" class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="3" placeholder="Write a description..." maxlength="4000" value="{{ old('description')
                 }}">
+                    {{ old('description') }}
+                </textarea>
                 @error('description')
                     <div class="alert alert-danger">
                         {{ $message }}
@@ -74,8 +76,15 @@
 
             <div class="mb-3">
                 <label for="comic-genre" class="form-label">Comic genre</label>
-                <input type="text" class="form-control @error('comic-genre') is-invalid @enderror" id="comic-genre" name="comic-genre" placeholder="What is its genre?" min="1" max="20" value="{{ old('comic-genre')
+                <select type="text" class="form-select @error('comic-genre') is-invalid @enderror" id="comic-genre" name="comic-genre" placeholder="What is its genre?" min="1" max="20" value="{{ old('comic-genre')
                 }}">
+                    <option {{ empty(old('comic-genre')) ? 'selected' : '' }} value="" disabled selected> Select a genre... </option>
+                    <option {{ old('comic-genre') == 'fantasy' ? 'selected' : '' }} value="fantasy"> Fantasy </option>
+                    <option {{ old('comic-genre') == 'action' ? 'selected' : '' }} value="action"> Action </option>
+                    <option @if (old('comic-genre') == 'documentary') selected @endif value="documentary"> Documentary </option>
+                    <option @if (old('comic-genre') == 'comedy') selected @endif value="comedy"> Comedy </option>
+                    <option @if (old('comic-genre') == 'horror') selected @endif value="horror"> Horror </option>
+                </select>
                 @error('comic-genre')
                 <div class="alert alert-danger">
                    {{ $message }}

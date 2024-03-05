@@ -60,3 +60,6 @@ Creare il seeder per la tabella comics utilizzando il file in allegato.
 
 
 php artisan lang:publish
+
+# PER VALIDATION: 
+php artisan make:request StoreNomeModelRequest e mettere dentro la funzione rules() il nostro array di dati validati, con chiavi (name input) e valori (nullable, required, max, min, in: etc)
