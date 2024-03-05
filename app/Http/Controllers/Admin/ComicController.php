@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreComicRequest;
 use Illuminate\Http\Request;
 
 //Models
@@ -69,25 +70,30 @@ class ComicController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreComicRequest $request)
     {
-        // VALIDATION
-        $validatedSingleComicResults = $request->validate([
-            'title' => 'required|max:64',
-            'description' => 'nullable|max:4000',
-            'src' => 'nullable|max:1024|min:1',
-            'price' => 'required|max:50',
-            'series' => 'required|max:100|in:show,movie,documentary',
-            'sale_date' => 'required',
-            'type' => 'required|max:30',
-            'artists' => 'nullable',
-            'writers' => 'nullable',
-        ]);
+        // VALIDATION = POSSO METTERLE ANCHE IN STORE_NOMEMODEL_REQUEST (request personalizzata,fatta cosi: php artisan make:request StoreComicRequest)
+        //$validatedSingleComicResults = $request->validate([
+            //'title' => 'required|string|max:64',
+            //'description' => 'nullable|string|max:4000',
+            //'src' => 'nullable|string|max:1024|min:1',
+            //'comic-price' => 'required|max:50',
+            //'comic-genre' => 'required|max:100|in:show,movie,documentary',
+            //'sale_date' => 'required',
+            //'type' => 'required|max:30',
+            //'artists' => 'nullable',
+            //'writers' => 'nullable',
+            // le chiavi sono i name="" dei miei input
+        //],[
+            // 'title.required' => 'MESSAGGIO ERRORE CUSTUMED'
+        //]
+   //);
 
         // QUESTA $REQUEST->ALL() NON CI SERVE PI SE FACCIAMO LA VALIDAZIONE!
         // $validateeSingleComicResults = $request->all();
 
-        $comic = Comic::create($validatedSingleComicResults);
+        //$comic = Comic::create($validatedSingleComicResults);
+        $comic = Comic::create($request);
 
         // OPPURE 
         //$comic = new Comic();
@@ -131,15 +137,16 @@ class ComicController extends Controller
 
         // VALIDATION
         $validatedSingleComicResults = $request->validate([
-            // 'title' => 'required|max:64', <- se non voglio che il titolo non puo essere aggiornato
-            'description' => 'nullable|max:4000',
-            'src' => 'nullable|max:1024|min:1',
-            'price' => 'required|max:50',
-            'series' => 'required|max:100|in:show,movie,documentary',
+            // 'title' => 'required|string|max:64', <- se non voglio che il titolo non puo essere aggiornato
+            'description' => 'nullable|string|max:4000',
+            'src' => 'nullable|string|max:1024|min:1',
+            'comic-price' => 'required|max:50',
+            'comic-genre' => 'required|max:100|in:show,movie,documentary',
             'sale_date' => 'required',
             'type' => 'required|max:30',
             'artists' => 'nullable',
             'writers' => 'nullable',
+            // le chiavi sono i name="" dei miei input
         ], [
             // 'title.required' => 'MESSAGGIO ERRORE CUSTUMED'
         ]);
