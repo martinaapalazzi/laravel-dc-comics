@@ -72,6 +72,9 @@ class ComicController extends Controller
      */
     public function store(StoreComicRequest $request)
     {
+        $comic = Comic::create($request->validated());
+
+        return redirect()->route('comics.show', ['comic' => $comic->id]);
         // VALIDATION = POSSO METTERLE ANCHE IN STORE_NOMEMODEL_REQUEST (request personalizzata,fatta cosi: php artisan make:request StoreComicRequest)
         //$validatedSingleComicResults = $request->validate([
             //'title' => 'required|string|max:64',
@@ -89,15 +92,15 @@ class ComicController extends Controller
         //]
    //);
 
-        // QUESTA $REQUEST->ALL() NON CI SERVE PI SE FACCIAMO LA VALIDAZIONE!
+        // QUESTA $REQUEST->ALL() NON CI SERVE PIÙ SE FACCIAMO LA VALIDAZIONE!
         // $validateeSingleComicResults = $request->all();
 
         //$comic = Comic::create($validatedSingleComicResults);
-        $comic = Comic::create($request);
+        
 
         // OPPURE 
         //$comic = new Comic();
-                                        // è il name="" del mio input
+                // è il name="" del mio input
         //$comic->title = $validatedSingleComicResults['title'];
         //$comic->description = $validatedSingleComicResults['description'];
         //$comic->src = $validatedSingleComicResults['src'];
@@ -106,14 +109,12 @@ class ComicController extends Controller
         //$comic->sale_date = $validatedSingleComicResults['sale_date'];
         //$comic->type = $validatedSingleComicResults['type'];
         //if($validatedSingleComicResults['artists'] !== null) {
-        //    $comic->artists = implode(", ", $validatedSingleComicResults['artists']);
+        //$comic->artists = implode(", " $validatedSingleComicResults['artists']);
         //}
         //if($validatedSingleComicResults['artists'] !== null) {
-        //    $comic->writers = implode(", ", $validatedSingleComicResults['writers']);
+        //$comic->writers = implode(", ", $validatedSingleComicResults['writers']);
+        //$comic->save();
         //}
-        $comic->save();
-
-        return redirect()->route('comics.show', ['comic' => $comic->id]);
     }
 
     /* -------------- FINE CREATE -------------- */
