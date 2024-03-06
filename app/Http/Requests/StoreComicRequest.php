@@ -24,7 +24,7 @@ class StoreComicRequest extends FormRequest
         return [
             'title' => 'required|string|max:64',
             'description' => 'nullable|string|max:4000',
-            'src' => 'nullable|string|max:1024|min:1',
+            'src' => 'nullable|string|max:1024',
             'comic-price' => 'required|max:50',
             'comic-genre' => 'required|max:100|in:fantasy,action,documentary,comedy,horror',
             'sale_date' => 'required',

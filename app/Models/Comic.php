@@ -9,11 +9,11 @@ class Comic extends Model
 {
     use HasFactory;
 
-    // I campi che sono mass assignable sono: src, title, type...
+    // I campi che sono mass assignable sono: src, title, type... (colonne abilitate al mass assignment) SONOO I NOMI DEL DB
     protected $fillable = [
         'title',
         'description',
-        'thumb',
+        'src',
         'price',
         'series',
         'sale_date',

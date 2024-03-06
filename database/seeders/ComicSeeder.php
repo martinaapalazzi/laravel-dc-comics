@@ -33,6 +33,12 @@ class ComicSeeder extends Seeder
             $comic->writers = implode(", ", $singleComicData['writers']);
             
             $comic->save();
+
+            // OPPURE
+            //$comic = Comic::create([
+            //    'title' => $singleComicData['title'],
+            //    'description' => $singleComicData['description'],
+            //])
         }
     }
 }
